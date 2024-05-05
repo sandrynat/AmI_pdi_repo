@@ -1,5 +1,5 @@
-Pentaho Data Integration (PDI) for loading context dataset and MyDigitalFootprint dataset 
-**dataset should be on C:/datasets folder
+# Pentaho Data Integration (PDI) for loading context dataset and MyDigitalFootprint dataset 
+**dataset should be on C:/datasets folder**
 - Install JDK e PDI 
 - Execute spoon.bat
 - Open file repository AmI_repo (Connect/Add/File Repository)
@@ -7,3 +7,7 @@ Pentaho Data Integration (PDI) for loading context dataset and MyDigitalFootprin
 - Test connection
 - Open Job Load Data Context, click Run
 - Open Job Load Data MDF, click Run
+
+
+# columns excel file
+Used columns of both datasets
