@@ -14,4 +14,6 @@ Used columns of both datasets
 
 # time converter
 https://www.epochconverter.com/
-#
+
+# Excel
+=ÍNDICE(H$1:O$1;CORRESP(MÁXIMO(H2:O2);H2:O2;0))
