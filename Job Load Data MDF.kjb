@@ -7,7 +7,7 @@
   <created_user>-</created_user>
   <created_date>2024/05/05 12:08:37.596</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2024/05/15 00:56:48.269</modified_date>
+  <modified_date>2024/05/15 01:22:12.803</modified_date>
   <parameters>
     </parameters>
   <connection>
@@ -383,6 +383,7 @@
       <attributes/>
       <sql>CREATE TABLE mdf_motion_sensors (
 time bigint,
+time_t timestamp,
 acc_x_mean double precision, 
 acc_y_mean double precision,
 acc_z_mean double precision,
@@ -464,6 +465,7 @@ user_x int
       <attributes/>
       <sql>create table mdf_battery(
 time bigint,
+time_t timestamp,
 	level real,
 	charging int,
 	user_x int
@@ -544,6 +546,7 @@ time bigint,
       <attributes/>
       <sql>create table mdf_location(
 time bigint,
+time_t timestamp,
 lat double precision,
 long double precision,
 speed real,
@@ -630,6 +633,7 @@ user_x int
       <attributes/>
       <sql>create table mdf_wifi_scans
 (time bigint,
+time_t timestamp,
 signal_level int,
 dbm_level int,
 configured int,
@@ -712,6 +716,7 @@ user_x int
       <attributes/>
       <sql>create table mdf_environment_sensors
 (time bigint,
+time_t timestamp,
 light_mean double precision,
 pressure_mean double precision,
 user_x int
@@ -810,6 +815,7 @@ user_x int
       <attributes/>
       <sql>CREATE TABLE mdf_activities (
 time Bigint,
+time_t timestamp,
 in_vehicle double precision, 
 on_bicycle double precision,
 on_foot double precision,
@@ -845,7 +851,6 @@ user_x int
       <trans_object_id/>
       <filename/>
       <transname>\Load_MDF_activities</transname>
-      <directory/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
@@ -876,6 +881,120 @@ user_x int
       <yloc>544</yloc>
       <attributes_kjc/>
     </entry>
+    <entry>
+      <name>SQL</name>
+      <description/>
+      <type>SQL</type>
+      <attributes/>
+      <sql>UPDATE mdf_motion_sensors
+SET time_t = TO_TIMESTAMP(time/1000)</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>AmI_Sandra</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>880</xloc>
+      <yloc>128</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>SQL 2</name>
+      <description/>
+      <type>SQL</type>
+      <attributes/>
+      <sql>UPDATE mdf_battery
+SET time_t = TO_TIMESTAMP(time/1000)</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>AmI_Sandra</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>848</xloc>
+      <yloc>192</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>SQL 3</name>
+      <description/>
+      <type>SQL</type>
+      <attributes/>
+      <sql>UPDATE mdf_location
+SET time_t = TO_TIMESTAMP(time/1000)</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>AmI_Sandra</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>848</xloc>
+      <yloc>256</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>SQL 4</name>
+      <description/>
+      <type>SQL</type>
+      <attributes/>
+      <sql>UPDATE mdf_wifi_scans
+SET time_t = TO_TIMESTAMP(time/1000)</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>AmI_Sandra</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>848</xloc>
+      <yloc>320</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>SQL 5</name>
+      <description/>
+      <type>SQL</type>
+      <attributes/>
+      <sql>UPDATE mdf_environment_sensors
+SET time_t = TO_TIMESTAMP(time/1000)</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>AmI_Sandra</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>864</xloc>
+      <yloc>384</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>SQL 6</name>
+      <description/>
+      <type>SQL</type>
+      <attributes/>
+      <sql>UPDATE mdf_activities
+SET time_t = TO_TIMESTAMP(time/1000)</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>AmI_Sandra</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>928</xloc>
+      <yloc>416</yloc>
+      <attributes_kjc/>
+    </entry>
   </entries>
   <hops>
     <hop>
@@ -883,25 +1002,16 @@ user_x int
       <to>remove motion_sensors table</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
-      <enabled>N</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>Y</unconditional>
-    </hop>
-    <hop>
-      <from>Load MDF motion sensors</from>
-      <to>Success</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
+      <unconditional>Y</unconditional>
     </hop>
     <hop>
       <from>Start</from>
       <to>remove battery table</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>Y</unconditional>
     </hop>
@@ -942,15 +1052,6 @@ user_x int
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Load MDF battery</from>
-      <to>Success</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
       <from>remove location table</from>
       <to>create mdf_location table</to>
       <from_nr>0</from_nr>
@@ -964,7 +1065,7 @@ user_x int
       <to>remove location table</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>Y</unconditional>
     </hop>
@@ -978,20 +1079,11 @@ user_x int
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Load MDF location</from>
-      <to>Success</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
       <from>Start</from>
       <to>remove wifi_scans table</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>Y</unconditional>
     </hop>
@@ -1014,20 +1106,11 @@ user_x int
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Load MDF wifi_scans</from>
-      <to>Success</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
       <from>Start</from>
       <to>remove environment_sensors table</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>Y</unconditional>
     </hop>
@@ -1043,15 +1126,6 @@ user_x int
     <hop>
       <from>create mdf_environment_sensors table</from>
       <to>Load MDF environment_sensors</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Load MDF environment_sensors</from>
-      <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -1086,13 +1160,112 @@ user_x int
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Load MDF activities table</from>
+      <from>Load MDF motion sensors</from>
+      <to>SQL</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>SQL</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Load MDF battery</from>
+      <to>SQL 2</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>SQL 2</from>
+      <to>Success</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Load MDF location</from>
+      <to>SQL 3</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>SQL 3</from>
+      <to>Success</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Load MDF wifi_scans</from>
+      <to>SQL 4</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>SQL 4</from>
+      <to>Success</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Load MDF environment_sensors</from>
+      <to>SQL 5</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>SQL 5</from>
+      <to>Success</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Load MDF activities table</from>
+      <to>SQL 6</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>SQL 6</from>
+      <to>Success</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
     </hop>
   </hops>
   <notepads>
