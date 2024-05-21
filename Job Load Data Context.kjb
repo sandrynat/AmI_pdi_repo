@@ -7,7 +7,7 @@
   <created_user>-</created_user>
   <created_date>2024/05/04 21:52:20.334</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2024/05/16 00:13:57.858</modified_date>
+  <modified_date>2024/05/21 23:08:42.683</modified_date>
   <parameters>
     </parameters>
   <connection>
@@ -16,9 +16,9 @@
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>profile22</database>
-    <port>5432</port>
+    <port>5433</port>
     <username>postgres</username>
-    <password>Encrypted 2be98afc86aa7f2e4bb16bd64d980aac9</password>
+    <password>Encrypted 2be98afc86aa7f2e4cb79ce71da9fa6d4</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -37,7 +37,7 @@
       </attribute>
       <attribute>
         <code>PORT_NUMBER</code>
-        <attribute>5432</attribute>
+        <attribute>5433</attribute>
       </attribute>
       <attribute>
         <code>PRESERVE_RESERVED_WORD_CASE</code>
@@ -386,8 +386,6 @@ sensor_rotation_vec_x_mean DOUBLE PRECISION,
 sensor_rotation_vec_y_mean DOUBLE PRECISION,
 sensor_rotation_vec_z_mean DOUBLE PRECISION,
 sensor_proximity_mean DOUBLE PRECISION,
-multimedia_picture INT,
-multimedia_video INT,
 label text,
 activity_label text,
 user_x int
@@ -557,7 +555,11 @@ user_x int
       <type>SQL</type>
       <attributes/>
       <sql>UPDATE context_dataset
-SET time_t = TO_TIMESTAMP(time/1000)</sql>
+SET time_t = TO_TIMESTAMP(time/1000);
+SELECT AddGeometryColumn('context_dataset','posicao_it',6875,'POINT', 2 );
+UPDATE context_dataset SET posicao_it = ST_SetSRID(ST_Point(location_lon,location_lat),6875);
+SELECT AddGeometryColumn('context_dataset','posicao_pt',4326,'POINT', 2 );
+UPDATE context_dataset SET posicao_pt = ST_SetSRID(ST_Point(location_lon,location_lat),4326);</sql>
       <useVariableSubstitution>F</useVariableSubstitution>
       <sqlfromfile>F</sqlfromfile>
       <sqlfilename/>
