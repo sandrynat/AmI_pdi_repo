@@ -1,0 +1,1 @@
+select posicao_pt, st_astext(posicao_pt),label from context_dataset_stage where uid=1 and time_t>'2018-03-13 07:42:32' and time_t< '2018-03-13 20:52:40';
