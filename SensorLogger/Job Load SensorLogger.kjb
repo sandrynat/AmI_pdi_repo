@@ -1,13 +1,13 @@
 <job>
-  <name>Job Load Data Context</name>
+  <name>Job Load SensorLogger</name>
   <description/>
   <extended_description/>
   <job_version/>
-  <directory>/</directory>
+  <directory>/SensorLogger</directory>
   <created_user>-</created_user>
-  <created_date>2024/05/04 21:52:20.334</created_date>
+  <created_date>2024/05/25 18:40:03.328</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2024/05/25 19:02:25.808</modified_date>
+  <modified_date>2024/05/25 19:34:57.922</modified_date>
   <parameters>
     </parameters>
   <connection>
@@ -354,42 +354,23 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>48</xloc>
-      <yloc>112</yloc>
+      <xloc>208</xloc>
+      <yloc>192</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>create context_dataset table</name>
+      <name>create sensor_logger</name>
       <description/>
       <type>SQL</type>
       <attributes/>
-      <sql>CREATE TABLE context_dataset (
+      <sql>CREATE TABLE sensor_logger (
 time bigint,
 time_t timestamp,
-location_lat DOUBLE PRECISION,
-location_lon DOUBLE PRECISION,
-wifi_connected INT,
-sensor_light_mean DOUBLE PRECISION,
-sensor_accelerometer_x_mean DOUBLE PRECISION,
-sensor_accelerometer_y_mean DOUBLE PRECISION,
-sensor_accelerometer_z_mean DOUBLE PRECISION,
-sensor_gravity_x_mean DOUBLE PRECISION,
-sensor_gravity_y_mean DOUBLE PRECISION,
-sensor_gravity_z_mean DOUBLE PRECISION,
-sensor_gyroscope_x_mean DOUBLE PRECISION,
-sensor_gyroscope_y_mean DOUBLE PRECISION,
-sensor_gyroscope_z_mean DOUBLE PRECISION,
-sensor_linear_acc_x_mean DOUBLE PRECISION,
-sensor_linear_acc_y_mean DOUBLE PRECISION,
-sensor_linear_acc_z_mean DOUBLE PRECISION,
-sensor_rotation_vec_x_mean DOUBLE PRECISION,
-sensor_rotation_vec_y_mean DOUBLE PRECISION,
-sensor_rotation_vec_z_mean DOUBLE PRECISION,
-sensor_proximity_mean DOUBLE PRECISION,
-label text,
-activity_label text,
+longitude DOUBLE PRECISION,
+latitude DOUBLE PRECISION,
 user_x int
-);</sql>
+);
+	</sql>
       <useVariableSubstitution>F</useVariableSubstitution>
       <sqlfromfile>F</sqlfromfile>
       <sqlfilename/>
@@ -398,19 +379,19 @@ user_x int
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>384</xloc>
-      <yloc>112</yloc>
+      <xloc>560</xloc>
+      <yloc>192</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>Load ContextDataset_user1</name>
+      <name>Load sensor_logger_user257</name>
       <description/>
       <type>TRANS</type>
       <attributes/>
       <specification_method>rep_name</specification_method>
       <trans_object_id/>
       <filename/>
-      <transname>\Load_ContextDataset_user1</transname>
+      <transname>\SensorLogger\Load sensor_logger_user257</transname>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
@@ -437,16 +418,16 @@ user_x int
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>384</xloc>
-      <yloc>240</yloc>
+      <xloc>560</xloc>
+      <yloc>320</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>remove table context dataset</name>
+      <name>remove table sensor_logger</name>
       <description/>
       <type>SQL</type>
       <attributes/>
-      <sql>DROP TABLE IF EXISTS context_dataset;</sql>
+      <sql>DROP TABLE IF EXISTS sensor_logger;</sql>
       <useVariableSubstitution>F</useVariableSubstitution>
       <sqlfromfile>F</sqlfromfile>
       <sqlfilename/>
@@ -455,19 +436,19 @@ user_x int
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>208</xloc>
-      <yloc>112</yloc>
+      <xloc>368</xloc>
+      <yloc>192</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>Load ContextDataset user_2</name>
+      <name>Load sensor_logger_user_217</name>
       <description/>
       <type>TRANS</type>
       <attributes/>
       <specification_method>rep_name</specification_method>
       <trans_object_id/>
       <filename/>
-      <transname>\Load_ContextDataset_user2</transname>
+      <transname>\SensorLogger\Load sensor_logger_user217</transname>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
@@ -494,47 +475,8 @@ user_x int
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>544</xloc>
-      <yloc>240</yloc>
-      <attributes_kjc/>
-    </entry>
-    <entry>
-      <name>Load ContextDataset user_3</name>
-      <description/>
-      <type>TRANS</type>
-      <attributes/>
-      <specification_method>rep_name</specification_method>
-      <trans_object_id/>
-      <filename/>
-      <transname>\Load_ContextDataset_user3</transname>
-      <arg_from_previous>N</arg_from_previous>
-      <params_from_previous>N</params_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <clear_rows>N</clear_rows>
-      <clear_files>N</clear_files>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <loglevel>Basic</loglevel>
-      <cluster>N</cluster>
-      <slave_server_name/>
-      <set_append_logfile>N</set_append_logfile>
-      <wait_until_finished>Y</wait_until_finished>
-      <follow_abort_remote>N</follow_abort_remote>
-      <create_parent_folder>N</create_parent_folder>
-      <logging_remote_work>N</logging_remote_work>
-      <run_configuration>Pentaho local</run_configuration>
-      <suppress_result_data>N</suppress_result_data>
-      <parameters>
-        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>720</xloc>
-      <yloc>240</yloc>
+      <xloc>880</xloc>
+      <yloc>320</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -545,8 +487,8 @@ user_x int
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>976</xloc>
-      <yloc>240</yloc>
+      <xloc>1152</xloc>
+      <yloc>320</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -554,9 +496,11 @@ user_x int
       <description/>
       <type>SQL</type>
       <attributes/>
-      <sql>UPDATE context_dataset
-SET time_t = TO_TIMESTAMP(time/1000);</sql>
-      <useVariableSubstitution>F</useVariableSubstitution>
+      <sql>UPDATE sensor_logger
+SET time_t = TO_TIMESTAMP(time/1000000);
+SELECT AddGeometryColumn('sensor_logger','posicao_coimbra',4326,'POINT', 2 );
+UPDATE sensor_logger SET posicao_coimbra = ST_SetSRID(ST_Point(longitude,latitude),4326);</sql>
+      <useVariableSubstitution>T</useVariableSubstitution>
       <sqlfromfile>F</sqlfromfile>
       <sqlfilename/>
       <sendOneStatement>F</sendOneStatement>
@@ -564,24 +508,15 @@ SET time_t = TO_TIMESTAMP(time/1000);</sql>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>848</xloc>
-      <yloc>240</yloc>
+      <xloc>1040</xloc>
+      <yloc>320</yloc>
       <attributes_kjc/>
     </entry>
   </entries>
   <hops>
     <hop>
-      <from>create context_dataset table</from>
-      <to>Load ContextDataset_user1</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
       <from>Start</from>
-      <to>remove table context dataset</to>
+      <to>remove table sensor_logger</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -589,17 +524,8 @@ SET time_t = TO_TIMESTAMP(time/1000);</sql>
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>remove table context dataset</from>
-      <to>create context_dataset table</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>N</evaluation>
-      <unconditional>Y</unconditional>
-    </hop>
-    <hop>
-      <from>Load ContextDataset_user1</from>
-      <to>Load ContextDataset user_2</to>
+      <from>remove table sensor_logger</from>
+      <to>create sensor_logger</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -607,8 +533,8 @@ SET time_t = TO_TIMESTAMP(time/1000);</sql>
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Load ContextDataset user_2</from>
-      <to>Load ContextDataset user_3</to>
+      <from>create sensor_logger</from>
+      <to>Load sensor_logger_user257</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -616,8 +542,8 @@ SET time_t = TO_TIMESTAMP(time/1000);</sql>
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Load ContextDataset user_3</from>
-      <to>SQL</to>
+      <from>Load sensor_logger_user257</from>
+      <to>Load sensor_logger_user_217</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -627,6 +553,15 @@ SET time_t = TO_TIMESTAMP(time/1000);</sql>
     <hop>
       <from>SQL</from>
       <to>Success</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Load sensor_logger_user_217</from>
+      <to>SQL</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
