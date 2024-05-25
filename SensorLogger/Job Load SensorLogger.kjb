@@ -7,7 +7,7 @@
   <created_user>-</created_user>
   <created_date>2024/05/25 18:40:03.328</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2024/05/25 19:07:44.812</modified_date>
+  <modified_date>2024/05/25 19:34:57.922</modified_date>
   <parameters>
     </parameters>
   <connection>
@@ -16,9 +16,9 @@
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>profile22</database>
-    <port>5433</port>
+    <port>5432</port>
     <username>postgres</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb79ce71da9fa6d4</password>
+    <password>Encrypted 2be98afc86aa7f2e4bb16bd64d980aac9</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -37,7 +37,7 @@
       </attribute>
       <attribute>
         <code>PORT_NUMBER</code>
-        <attribute>5433</attribute>
+        <attribute>5432</attribute>
       </attribute>
       <attribute>
         <code>PRESERVE_RESERVED_WORD_CASE</code>
@@ -475,46 +475,7 @@ user_x int
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>736</xloc>
-      <yloc>320</yloc>
-      <attributes_kjc/>
-    </entry>
-    <entry>
-      <name>Load sensor_logger_user_146</name>
-      <description/>
-      <type>TRANS</type>
-      <attributes/>
-      <specification_method>rep_name</specification_method>
-      <trans_object_id/>
-      <filename/>
-      <transname>\SensorLogger\Load sensor_logger_user146</transname>
-      <arg_from_previous>N</arg_from_previous>
-      <params_from_previous>N</params_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <clear_rows>N</clear_rows>
-      <clear_files>N</clear_files>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <loglevel>Basic</loglevel>
-      <cluster>N</cluster>
-      <slave_server_name/>
-      <set_append_logfile>N</set_append_logfile>
-      <wait_until_finished>Y</wait_until_finished>
-      <follow_abort_remote>N</follow_abort_remote>
-      <create_parent_folder>N</create_parent_folder>
-      <logging_remote_work>N</logging_remote_work>
-      <run_configuration>Pentaho local</run_configuration>
-      <suppress_result_data>N</suppress_result_data>
-      <parameters>
-        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>912</xloc>
+      <xloc>880</xloc>
       <yloc>320</yloc>
       <attributes_kjc/>
     </entry>
@@ -536,8 +497,10 @@ user_x int
       <type>SQL</type>
       <attributes/>
       <sql>UPDATE sensor_logger
-SET time_t = TO_TIMESTAMP(time/1000000);</sql>
-      <useVariableSubstitution>F</useVariableSubstitution>
+SET time_t = TO_TIMESTAMP(time/1000000);
+SELECT AddGeometryColumn('sensor_logger','posicao_coimbra',4326,'POINT', 2 );
+UPDATE sensor_logger SET posicao_coimbra = ST_SetSRID(ST_Point(longitude,latitude),4326);</sql>
+      <useVariableSubstitution>T</useVariableSubstitution>
       <sqlfromfile>F</sqlfromfile>
       <sqlfilename/>
       <sendOneStatement>F</sendOneStatement>
@@ -588,26 +551,17 @@ SET time_t = TO_TIMESTAMP(time/1000000);</sql>
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Load sensor_logger_user_217</from>
-      <to>Load sensor_logger_user_146</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Load sensor_logger_user_146</from>
-      <to>SQL</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
       <from>SQL</from>
       <to>Success</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Load sensor_logger_user_217</from>
+      <to>SQL</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
