@@ -7,7 +7,7 @@
   <created_user>-</created_user>
   <created_date>2024/05/04 21:52:20.334</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2024/05/25 19:02:25.808</modified_date>
+  <modified_date>2024/05/28 10:14:45.015</modified_date>
   <parameters>
     </parameters>
   <connection>
@@ -16,9 +16,9 @@
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>profile22</database>
-    <port>5432</port>
+    <port>5433</port>
     <username>postgres</username>
-    <password>Encrypted 2be98afc86aa7f2e4bb16bd64d980aac9</password>
+    <password>Encrypted 2be98afc86aa7f2e4cb79ce71da9fa6d4</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -37,7 +37,7 @@
       </attribute>
       <attribute>
         <code>PORT_NUMBER</code>
-        <attribute>5432</attribute>
+        <attribute>5433</attribute>
       </attribute>
       <attribute>
         <code>PRESERVE_RESERVED_WORD_CASE</code>
@@ -494,8 +494,8 @@ user_x int
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>544</xloc>
-      <yloc>240</yloc>
+      <xloc>576</xloc>
+      <yloc>160</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
