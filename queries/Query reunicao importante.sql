@@ -19,7 +19,7 @@ SELECT gps.trajectory_id, ST_MakeLine(gps.posicao_it) As geom
 
 select trajectory_id,uid,start_time, geom,ST_astext(geom)  from(
 SELECT gps.trajectory_id,uid,min(time_t) as start_time, ST_MakeLine(gps.posicao_pt ORDER BY time_t) As geom
-	FROM context_dataset_stage As gps where trajectory_id>=0 and uid>=0
+	FROM context_dataset_stage As gps where trajectory_id>=0
 	GROUP BY trajectory_id, uid
 		order by uid) order by LENGTH(ST_astext(geom)) desc;
 		

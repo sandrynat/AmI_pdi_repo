@@ -7,7 +7,7 @@
   <created_user>-</created_user>
   <created_date>2024/05/25 18:40:03.328</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2024/05/28 19:28:39.206</modified_date>
+  <modified_date>2024/05/28 23:18:16.352</modified_date>
   <parameters>
     </parameters>
   <connection>
@@ -497,7 +497,7 @@ user_x int
       <type>SQL</type>
       <attributes/>
       <sql>UPDATE sensor_logger
-SET time_t = TO_TIMESTAMP(time/1000000);
+SET time_t = TO_TIMESTAMP(time/1000000000);
 SELECT AddGeometryColumn('sensor_logger','posicao_google',4326,'POINT', 2 );
 UPDATE sensor_logger SET posicao_google = ST_Point(longitude,latitude,4326);
 SELECT AddGeometryColumn('sensor_logger','posicao_pt',3763,'POINT', 2 );
