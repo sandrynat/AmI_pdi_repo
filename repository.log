@@ -25,3 +25,11 @@ Updating database connection   {0}
 Save repository element : AmI_Sandra : Modification by user
 Rename job : Renamed from job Load stops_open_data to stage sensorlogger to job Load StopsOpenData sensorlogger
 Rename transformation : Renamed from Load stops_open_data to stage sensorlogger to Load StopsOpenData sensorlogger
+Rename job : Renamed from Load skm csv to stage to job Load StopsOpenData context
+Rename transformation : Renamed from load skm_csv to context_stage to Load StopsOpenData context
+Rename job : Renamed from job Load StopsOpenData context to job Load StopsOpenData context old
+Rename job : Renamed from job Load StopsOpenData context old to job Load StopsOpenData context
+Rename job : Renamed from job Load TripsOpenData context to job Load TripsOpenData context OLD
+Rename job : Renamed from teste2 to job Load TripsOpenData context
+Rename transformation : Renamed from Load TripsOpenData context to Load TripsOpenData context OLD
+Rename transformation : Renamed from teste to Load TripsOpenData context
